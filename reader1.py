@@ -5,26 +5,19 @@ Created on Tue Dec 12 11:43:34 2017
 
 @author: no1
 """
-
 import tensorflow as tf
 from scipy import misc
 from matplotlib import pyplot as plt
-
 import numpy as np
-
-
 def reader(filename_queue):
-
   reader = tf.WholeFileReader()
   key, value = reader.read(filename_queue)
   record_bytes = tf.image.decode_image(value,channels=3)
   return record_bytes
 def distorted_inputs():
-
   filenames = ['apple.jpg','apple1.jpg','image.jpg']
   filename_queue = tf.train.string_input_producer(filenames)
   read_input = reader(filename_queue) 
-
   return read_input
 image=distorted_inputs()
 #images=tf.expand_dims(image)
