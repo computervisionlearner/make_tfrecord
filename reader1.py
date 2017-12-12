@@ -1,3 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Dec 12 11:43:34 2017
+
+@author: no1
+"""
+
 import tensorflow as tf
 from scipy import misc
 from matplotlib import pyplot as plt
@@ -5,7 +13,7 @@ from matplotlib import pyplot as plt
 import numpy as np
 
 
-def read_cifar10(filename_queue):
+def reader(filename_queue):
 
   reader = tf.WholeFileReader()
   key, value = reader.read(filename_queue)
@@ -15,7 +23,7 @@ def distorted_inputs():
 
   filenames = ['apple.jpg','apple1.jpg','image.jpg']
   filename_queue = tf.train.string_input_producer(filenames)
-  read_input = read_cifar10(filename_queue) 
+  read_input = reader(filename_queue) 
 
   return read_input
 image=distorted_inputs()
