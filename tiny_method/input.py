@@ -40,7 +40,6 @@ def inputs(train, batch_size):
 
   with tf.name_scope('input'):
     filename_queue = tf.train.string_input_producer([filename])
-    tf.train.string_input_producer
     image, label = read_and_decode(filename_queue)
     if train:
         images, sparse_labels = tf.train.shuffle_batch([image, label],
